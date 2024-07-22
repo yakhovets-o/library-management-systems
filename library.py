@@ -82,7 +82,7 @@ class Library(JSONStorage):
                 library.seek(0)
                 library.truncate()
                 json.dump(books, library, ensure_ascii=False, indent=4)
-                return f'The book with {book_id} 5 has been deleted'
+                return f'The book with {book_id} has been deleted'
         except json.JSONDecodeError as e:
             raise f'Decoding error JSON: {e}'
         except KeyError as e:

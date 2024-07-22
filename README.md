@@ -21,6 +21,7 @@
 ###  [***`book`***](https://github.com/yakhovets-o/library-management-systems/blob/main/book.py)
 
 *`Class Book`* -  Реализует создание книги 
+
 Имеет следующие атрибуты:
 * `title` (str): Название книги
 * `author` (str): Автор книги

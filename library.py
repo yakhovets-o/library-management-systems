@@ -31,11 +31,12 @@ class Library(JSONStorage):
             cls._instance = super().__new__(cls, *args, **kwargs)
         return cls._instance
 
-    def add_book(self, book: Book) -> None | NoReturn:
+    def add_book(self, book: Book) -> str | NoReturn:
         """
         Метод реализует добавление книги в хранилище
         :param book: объект Книги
-        :return: None | NoReturn
+        :return: Если аргумент был передан верный,
+        то функция вернет сообщение об успешной добавлении книги, либо поднимет исключение
         """
         add_book = {book.id: {'title': book.title, 'author': book.author, 'year': book.year,
                               'status': book.status}}
@@ -48,6 +49,7 @@ class Library(JSONStorage):
 
                 library.seek(0)
                 json.dump(books, library, ensure_ascii=False, indent=4)
+                return 'The book has been added to the repository'
         except json.JSONDecodeError as e:
             raise f'Decoding error JSON: {e}'
         except Exception as e:
@@ -63,11 +65,12 @@ class Library(JSONStorage):
 
         return '\n'.join([f'{k} {" ".join(map(str, v.values()))}' for k, v in books.items()])
 
-    def del_book(self, book_id: int | str) -> None | NoReturn:
+    def del_book(self, book_id: int | str) -> str | NoReturn:
         """
         Метод реализует удаление книги по id
         :param book_id: id книги в строковом или числовом представлении
-        :return: ничего либо исключение
+        :return: Если аргумент был передан верный,
+        то функция вернет сообщение об успешном удалении книги, либо поднимет исключение
         """
         try:
             with open(self.file_path, mode='r+') as library:
@@ -79,7 +82,7 @@ class Library(JSONStorage):
                 library.seek(0)
                 library.truncate()
                 json.dump(books, library, ensure_ascii=False, indent=4)
-
+                return f'The book with {book_id} 5 has been deleted'
         except json.JSONDecodeError as e:
             raise f'Decoding error JSON: {e}'
         except KeyError as e:

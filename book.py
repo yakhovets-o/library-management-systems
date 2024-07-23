@@ -25,6 +25,8 @@ class Book(JSONStorage):
         title (str): Название книги
         author (str): Автор книги
         year (int): Год издания
+        __id (int): Генерация id
+        __status (str): Установка статуса для книги (по умолчанию: в наличии)
     Methods:
         generate_id: Генерирует id книги сохраняя в хранилище
     """
@@ -38,8 +40,6 @@ class Book(JSONStorage):
         :param title: Название книги
         :param author: Автор книги
         :param year: Год издания
-        :param __id: Генерация id
-        :param __status: Установка статуса для книги (по умолчанию: в наличии)
         """
         self.__id = self.generate_id()
         self.title = title

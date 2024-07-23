@@ -10,7 +10,7 @@ class Library(JSONStorage):
     """
     Класс реализует CRUD
     Methods:
-        add_book: Добаление книги
+        add_book: Добавление книги
         get_books: Получение всех книг
         del_book: Удаление книги по id
         change_status_book: Смена статуса у книги
